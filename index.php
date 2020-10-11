@@ -1,6 +1,8 @@
 <?php
   date_default_timezone_set('Africa/Nairobi');
 
+  #App consumer key and app secret can be obtained from safaricom developers portal
+
   # access token
   $consumerKey = 'T2Rt3zLgO20r6pTuWDRSThC1YM311NPN'; //Fill with your app Consumer Key
   $consumerSecret = 'NX6xgyPjQbQ3a1vC'; // Fill with your app Secret
@@ -8,22 +10,12 @@
   # define the variales
   # provide the following details, this part is found on your test credentials on the developer account
   $BusinessShortCode = '174379';
-  $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';  
+  $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'; 
   
-  /*
-    This are your info, for
-    $PartyA should be the ACTUAL clients phone number or your phone number, format 2547********
-    $AccountRefference, it maybe invoice number, account number etc on production systems, but for test just put anything
-    TransactionDesc can be anything, probably a better description of or the transaction
-    $Amount this is the total invoiced amount, Any amount here will be 
-    actually deducted from a clients side/your test phone number once the PIN has been entered to authorize the transaction. 
-    for developer/test accounts, this money will be reversed automatically by midnight.
-  */
-  
-  $PartyA = '254757781821'; // This is your phone number, 
-  $AccountReference = 'INV001';
-  $TransactionDesc = 'Test Payment';
-  $Amount = '1';
+  $PartyA = '2547********'; // This is your phone number, 
+  $AccountReference = 'INV001'; // You can change this to any referrence you like
+  $TransactionDesc = 'Test Payment'; // Any string here for description
+  $Amount = '1'; //Test amount to be deducted from client or test number. This will be reversed by midnight for test accounts
  
   # Get the timestamp, format YYYYmmddhms -> 20181004151020
   $Timestamp = date('YmdHis');    
@@ -39,7 +31,8 @@
   $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
   # callback url
-  $CallBackURL = 'https://callback.kenova.co';  
+  $CallBackURL = 'https://callback.kenova.co';  // Callback url is where safaricom will send the results of the payment. The site will listen for success messages sent to the callback url
+                                                // Find the callback url example code in another repo provided in readme.md
 
   $curl = curl_init($access_token_url);
   curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
