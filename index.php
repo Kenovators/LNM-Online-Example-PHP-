@@ -4,17 +4,17 @@
   #App consumer key and app secret can be obtained from safaricom developers portal
 
   # access token
-  $consumerKey = 'T2Rt3zLgO20r6pTuWDRSThC1YM311NPN'; //Fill with your app Consumer Key
-  $consumerSecret = 'NX6xgyPjQbQ3a1vC'; // Fill with your app Secret
+  $consumerKey = ''; //Fill with your app Consumer Key
+  $consumerSecret = ''; // Fill with your app Secret
 
   # define the variales
   # provide the following details, this part is found on your test credentials on the developer account
-  $BusinessShortCode = '174379';
-  $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'; 
+  $BusinessShortCode = '';
+  $Passkey = ''; 
   
   $PartyA = '2547********'; // This is your phone number, 
   $AccountReference = 'INV001'; // You can change this to any referrence you like
-  $TransactionDesc = 'Test Payment'; // Any string here for description
+  $TransactionDesc = 'Payment for...'; // Any string here for description
   $Amount = '1'; //Test amount to be deducted from client or test number. This will be reversed by midnight for test accounts
  
   # Get the timestamp, format YYYYmmddhms -> 20181004151020
@@ -31,7 +31,7 @@
   $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
   # callback url
-  $CallBackURL = 'https://callback.kenova.co';  // Callback url is where safaricom will send the results of the payment. The site will listen for success messages sent to the callback url
+  $CallBackURL = '';  // Callback url is where safaricom will send the results of the payment. The site will listen for success messages sent to the callback url
                                                 // Find the callback url example code in another repo provided in readme.md
 
   $curl = curl_init($access_token_url);
